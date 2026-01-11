@@ -1,0 +1,9 @@
+work/
+results/
+.nextflow/
+.nextflow.log
+*.html
+*.zip
+*.fastq.gz
+*.gz
+
