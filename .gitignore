@@ -1,7 +1,13 @@
+# Ignore Nextflow working directories
 work/
 results/
-.nextflow/
-.nextflow.log
+.nf-work/
+.nf-cache/
+
+# Ignore Nextflow logs
+.nextflow.log*
+
+# Ignore data files
 *.html
 *.zip
 *.fastq.gz

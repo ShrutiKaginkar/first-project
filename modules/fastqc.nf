@@ -1,6 +1,6 @@
 nextflow.enable.dsl=2
 
-process CLEAN_READS_RAW_FASTQC {
+process FASTQC {
 
     input:
     path fastq
@@ -14,10 +14,4 @@ process CLEAN_READS_RAW_FASTQC {
     fastqc ${fastq}
     """
 }
-workflow FASTQC {
-    take:
-    fastq
 
-    main:
-    CLEAN_READS_RAW_FASTQC(fastq)
-}
