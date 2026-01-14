@@ -13,3 +13,4 @@ results/
 *.fastq.gz
 *.gz
 
+.nextflow
