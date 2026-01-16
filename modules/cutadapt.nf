@@ -1,13 +1,15 @@
 process CUTADAPT {
 
-    input:
-    path reads
+  input:
+  tuple val(sample_id), path(fastq)
 
-    output:
-    path "trimmed.fastq.gz"
+  output:
+  tuple val(sample_id), path("${sample_id}.trimmed.fastq.gz")
 
-    script:
-    """
-    cutadapt -o trimmed.fastq.gz ${reads}
-    """
+  script:
+  """
+  cutadapt -o ${sample_id}.trimmed.fastq.gz ${fastq}
+  """
 }
+
+

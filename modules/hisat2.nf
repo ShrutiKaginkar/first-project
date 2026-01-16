@@ -1,15 +1,16 @@
 process HISAT2_ALIGN {
 
+    publishDir params.output, mode: 'copy'
+
     input:
-    val sample
-    path trimmed_reads
-    path index
+        tuple val(sample_id), path(trimmed_reads)
+        path index
 
     output:
-    path "${sample}.bam"
+        tuple val(sample_id), path("${sample_id}.bam")
 
     script:
     """
-    hisat2 -x ${index} -U ${trimmed_reads} | samtools view -bS - > ${sample}.bam
+    hisat2 -x ${index} -U ${trimmed_reads} | samtools view -bS - > ${sample_id}.bam
     """
 }

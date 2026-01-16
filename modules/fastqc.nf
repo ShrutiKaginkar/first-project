@@ -2,15 +2,14 @@
 process FASTQC {
 
     input:
-    path fastq
+    tuple val(sample_id),  path (reads) 
 
     output:
-    path "*_fastqc.html"
-    path "*_fastqc.zip"
+    tuple val(sample_id), path ("*_fastqc.html"), path( "*_fastqc.zip")
 
     script:
     """
-    fastqc ${fastq}
+    fastqc ${reads}
     """
 }
 

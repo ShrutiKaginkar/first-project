@@ -1,9 +1,9 @@
-nextflow.enable.dsl=2
 
 include { FASTQC as RAW_FASTQC } from '../modules/fastqc.nf'
 include { FASTQC as TRIM_FASTQC } from '../modules/fastqc.nf'
 include { CUTADAPT } from '../modules/cutadapt.nf'
 include { HISAT2_ALIGN } from '../modules/hisat2.nf' 
+include { SAMTOOLS_SORT } from '../modules/samtools.nf' 
 
 workflow CLEAN_READS {
 
@@ -14,12 +14,13 @@ workflow CLEAN_READS {
         RAW_FASTQC(reads)
         trimmed = CUTADAPT(reads)
         TRIM_FASTQC(trimmed) 
-        aligned_bam = HISAT2_ALIGN(trimmed, params.hisat2_index)
-        
+        aligned = HISAT2_ALIGN(trimmed,params.hisat2_index)
+        sorted = SAMTOOLS_SORT(aligned)
 
     emit:
         trimmed // output channel if needed 
-        aligned_bam
+        aligned
+        sorted
 }
 
 
