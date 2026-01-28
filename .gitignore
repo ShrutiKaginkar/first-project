@@ -14,3 +14,7 @@ results/
 *.gz
 
 .nextflow
+
+# Ignore Nextflow trace files
+trace-*.txt
+.trace
