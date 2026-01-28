@@ -1,0 +1,5 @@
+task_id	hash	native_id	name	status	exit	submit	duration	realtime	%cpu	peak_rss	peak_vmem	rchar	wchar
+2	75/0090b3	1134	CLEAN_READS:CUTADAPT (1)	CACHED	0	2026-01-15 14:37:13.574	2.6s	2.5s	-	-	-	-	-
+1	1b/6d5cc0	1139	CLEAN_READS:RAW_FASTQC (1)	CACHED	0	2026-01-15 14:37:13.706	30.8s	30.7s	-	-	-	-	-
+4	b6/e26d68	1184	CLEAN_READS:TRIM_FASTQC (1)	CACHED	0	2026-01-15 14:37:17.198	29.2s	29.2s	-	-	-	-	-
+3	e6/54eadf	7599	CLEAN_READS:HISAT2_ALIGN (1)	ABORTED	-	2026-01-27 15:29:51.114	-	-	-	-	-	-	-

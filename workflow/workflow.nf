@@ -14,7 +14,7 @@ workflow CLEAN_READS {
         RAW_FASTQC(reads)
         trimmed = CUTADAPT(reads)
         TRIM_FASTQC(trimmed) 
-        aligned = HISAT2_ALIGN(trimmed,params.hisat2_index)
+        aligned = HISAT2_ALIGN(trimmed)
         sorted = SAMTOOLS_SORT(aligned)
 
     emit:
