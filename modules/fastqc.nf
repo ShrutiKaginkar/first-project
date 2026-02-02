@@ -9,7 +9,11 @@ process FASTQC {
 
     script:
     """
+<<<<<<< HEAD
     fastqc ${reads}
+=======
+    ${params.fastqc_bin} ${reads}
+>>>>>>> d4710e4 (Initial Nextflow pipeline)
     """
 }
 

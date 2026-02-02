@@ -10,7 +10,11 @@ process SAMTOOLS_SORT {
 
     script:
     """
+<<<<<<< HEAD
     samtools sort ${bam} -o ${sample_id}.sorted.bam
+=======
+   ${params.samtools_bin} sort ${bam} -o ${sample_id}.sorted.bam
+>>>>>>> d4710e4 (Initial Nextflow pipeline)
     """
 }
 
