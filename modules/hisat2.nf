@@ -11,6 +11,6 @@ process HISAT2_ALIGN {
 
     script:
     """
-    hisat2 -x ${params.hisat2_index} -U ${reads} | samtools view -bS - > ${sample_id}.bam
+    hisat2 -x ${params.ref} -U ${reads} | samtools view -bS - > ${sample_id}.bam
     """
 }
