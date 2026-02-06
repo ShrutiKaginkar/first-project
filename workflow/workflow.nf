@@ -24,7 +24,7 @@ workflow CLEAN_READS {
         trimmed // output channel if needed 
         aligned
         sorted
-        variants
+        variants 
 }
 
 
