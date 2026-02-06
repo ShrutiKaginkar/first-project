@@ -18,3 +18,5 @@ results/
 # Ignore Nextflow trace files
 trace-*.txt
 .trace
+# Ignore reference genome
+referece/
