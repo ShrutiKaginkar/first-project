@@ -66,7 +66,7 @@ conda activate bnf
 
 2. Install Required Tools
 conda install -c bioconda nextflow fastqc cutadapt hisat2 samtools bcftools -y
-Verify Installations
+# Verify Installations
 nextflow -version
 fastqc --version
 hisat2 --version
@@ -84,7 +84,7 @@ Reference genome: reference/ref.fa
 
 # Run the Pipeline
 nextflow run main.nf
-Resume a Stopped Run
+# Resume a Stopped Run
 nextflow run main.nf -resume
 ---
 
