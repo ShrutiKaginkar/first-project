@@ -1,27 +1,31 @@
 # NGS Variant Calling Pipeline (Nextflow)
-This repository contains a modular single-end NGS variant calling pipeline implemented using *Nextflow DSL2*. 
-The pipeline performs quality control, adapter trimming, alignment, BAM processing and variant calling using standard bioinformatics tools.
+
+This repository contains a modular single-end NGS variant calling pipeline implemented using **Nextflow DSL2**.  
+The pipeline performs quality control, adapter trimming, alignment, BAM processing, and variant calling using standard bioinformatics tools.  
 Large input data and reference files are intentionally excluded from version control.
---- 
-
-## Pipeline Overview
-
-### Input 
--Single-end FASTQ files (*.fastq.gz)
--Reference genome (ref.fa)
-
-### Workflow steps
-1. **FASTQC** - Quality control of raw reads
-2. **CUTADAPT** - Adapter trimming
-3. **FASTQC** - Quality control of trimmed reads
-4. **HISAT2** - Alignment to reference genome
-5. **SAMTOOLS** - BAM sorting and indexing
-6. **BCFTOOLS** - Variant calling
 
 ---
 
-## Repository structure 
-first-project/ 
+## Pipeline Overview
+
+### Input
+- Single-end FASTQ files (`*.fastq.gz`)
+- Reference genome (`ref.fa`)
+
+### Workflow Steps
+1. **FastQC** – Quality control of raw reads  
+2. **Cutadapt** – Adapter trimming  
+3. **FastQC** – Quality control of trimmed reads  
+4. **HISAT2** – Alignment to reference genome  
+5. **SAMtools** – BAM sorting and indexing  
+6. **BCFtools** – Variant calling  
+
+---
+
+## Repository Structure
+
+```text
+first-project/
 ├── main.nf
 ├── workflow.nf
 ├── modules/
@@ -33,82 +37,74 @@ first-project/
 ├── nextflow.config
 ├── README.md
 └── .gitignore
-
-
 ---
 
-## Tools used 
--Nextflow (DSL2)
--FastQC
--Cutadapt
--HISAT2
--Samtools
--Bcftools
+## Tools Used
+Nextflow (DSL2)
 
+FastQC
+
+Cutadapt
+
+HISAT2
+
+SAMtools
+
+BCFtools
 ---
 
-## Clone the repository
-bash
+### Clone the Repository
 git clone https://github.com/ShrutiKaginkar/first-project.git
 cd first-project
 
----
+### Setting Up the Environment
+1. Create Conda Environment
+Create and activate the conda environment using the provided environment.yml file:
 
-## Setting up environment 
-# 1. Creating conda environment
-Create and activate the conda environment using the provided environment.yml file: 
-bash
-conda env create -f environment.yml 
-conda activate bnf 
+conda env create -f environment.yml
+conda activate bnf
 
-# 2. Install required tool
-bash
+2. Install Required Tools
 conda install -c bioconda nextflow fastqc cutadapt hisat2 samtools bcftools -y
-
-- Verify the installations
+Verify Installations
 nextflow -version
 fastqc --version
 hisat2 --version
 cutadapt --version
 samtools --version
-bcftools --version 
+bcftools --version
 
----
+## How to Run the Pipeline
+This pipeline runs using Nextflow DSL2 with locally installed tools.
 
-## How to run the pipeline
-This pipeline runs using *Nextflow (DSL2) and locally installed tools*
-### INPUT files (not tracked in git)
--Raw reads: data/sample.fastq
--Reference genome: reference/ref.fa
+#Input Files (Not Tracked in Git)
+Raw reads: data/sample.fastq
 
-### To execute the pipeline use commands: 
-bash
+Reference genome: reference/ref.fa
+
+# Run the Pipeline
 nextflow run main.nf
-
-# To resume a stopped run
-bash
+Resume a Stopped Run
 nextflow run main.nf -resume
-
 ---
 
-## Files that were be generated are: 
-Pipeline Step	           Output Files
-FastQC	               *.html, *.zip quality control reports
-Cutadapt	             Trimmed FASTQ files (*_trimmed.fastq.gz)
-HISAT2	               Aligned BAM files (*.bam)
-SAMtools	             Sorted BAM (*.sorted.bam) and index (*.bai)
-Variant Calling	       Variant Call Format files (*.vcf.gz) and index (*.tbi)  
+## Output Files
+Pipeline Step     	Output Files
+FastQC	          *.html, *.zip quality control reports
+Cutadapt         	Trimmed FASTQ files (*_trimmed.fastq.gz)
+HISAT2	           Aligned BAM files (*.bam)
+SAMtools	         Sorted BAM (*.sorted.bam) and index (*.bai)
+Variant Calling	   Variant Call Format files (*.vcf.gz) and index (*.tbi)
 
----
-
-## Pushing codes to git repository
+## Pushing Code to GitHub Repository
 git add .
 git commit -m "Added variant calling pipeline"
 git push origin main
-ask for user name and password give it accordingly
+When prompted, enter your GitHub username and personal access token.
 
-## Ignoring large files
-Add this to .gitignore: 
+## Ignoring Large Files
+Add the following entries to .gitignore:
+
 reference/
 results/
 work/
@@ -116,7 +112,6 @@ work/
 *.vcf
 *.vcf.gz
 *.bai
-
 
 
 
