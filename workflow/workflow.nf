@@ -18,7 +18,7 @@ workflow CLEAN_READS {
         TRIM_FASTQC(trimmed) 
         aligned = HISAT2_ALIGN(trimmed)
         sorted = SAMTOOLS_SORT(aligned)
-        variants = VARIANT_CALLING(sorted)
+        variants = VARIANT_CALLING(sorted, params.reference_fasta)
 
     emit:
         trimmed // output channel if needed 

@@ -2,7 +2,7 @@ process VARIANT_CALLING {
 
     tag "${sample_id}"
 
-    publishDir "${params.outdir}/variant_calling", mode: 'copy'
+    publishDir "${params.output}/variant_calling", mode: 'copy'
 
     input:
     tuple val(sample_id), path(bam), path(bai)
@@ -14,16 +14,14 @@ process VARIANT_CALLING {
           path("${sample_id}.variants.vcf.gz.tbi")
 
     script:
-    """
-    ${params.bcftools_bin} mpileup \
-        -f ${ref} \
-        -Ou \
-        ${bam} | \
-    ${params.bcftools_bin} call \ 
-        -mv \
-        -Oz \
-        -o ${sample_id}.variants.vcf.gz
+"""
+${params.bcftools_bin} mpileup \
+    -f ${params.reference_fasta} \
+    -Ou ${bam} | \
+${params.bcftools_bin} call \
+    -mv -Oz \
+    -o ${sample_id}.variants.vcf.gz
 
-    ${params.bcftools_bin} index ${sample_id}.variants.vcf.gz
-    """
+${params.bcftools_bin} index -t ${sample_id}.variants.vcf.gz
+"""
 }
